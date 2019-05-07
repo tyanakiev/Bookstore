@@ -1,0 +1,12 @@
+﻿@model List<Henry_s_Bookstore.Models.BRANCH>
+
+@{
+    ViewBag.Title = "Locations";
+}
+
+<h2>Inventory</h2>
+
+@foreach (var locations in Model)
+{
+    @locations.BRANCH_NAME;
+}

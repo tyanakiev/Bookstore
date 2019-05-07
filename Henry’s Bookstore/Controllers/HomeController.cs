@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Henry_s_Bookstore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace Henry_s_Bookstore.Controllers
 {
     public class HomeController : Controller
     {
+        asp23Entities _context = new asp23Entities();
         public ActionResult Index()
         {
             return View();
@@ -25,6 +27,26 @@ namespace Henry_s_Bookstore.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Inventory()
+        {
+            List<INVENTORY> invetory = _context.INVENTORies.ToList();
+            return View(invetory);
+        }
+        public ActionResult Author()
+        {
+            List<AUTHOR> authors = _context.AUTHORs.ToList();
+            return View(authors);
+        }
+        public ActionResult Publisher()
+        {
+            List<PUBLISHER> publishers = _context.PUBLISHERs.ToList();
+            return View(publishers);
+        }
+        public ActionResult Location()
+        {
+            List<BRANCH> locations = _context.BRANCHes.ToList();
+            return View(locations);
         }
     }
 }

@@ -1,0 +1,13 @@
+﻿@model List<Henry_s_Bookstore.Models.AUTHOR>
+
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<h2>Inventory</h2>
+
+@foreach (var author in Model)
+{
+    @author.AUTHOR_FIRST
+    @author.AUTHOR_LAST
+}

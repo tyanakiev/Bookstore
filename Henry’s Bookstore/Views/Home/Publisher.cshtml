@@ -1,12 +1,58 @@
-﻿@model List<Henry_s_Bookstore.Models.PUBLISHER>
+﻿@model Henry_s_Bookstore.Models.PUBLISHER
 
 @{
-    ViewBag.Title = "Inventory";
+    ViewBag.Title = "Publisher";
 }
 
-<h2>Inventory</h2>
+<div class="row gray-div">
+    <p class="heading-position">For INTERNAL use only !</p>
+</div>
+<h4 class="text-center">Search by Publisher</h4>
+<div class="row">
+    <div class="col-4">
+        @Html.Partial("~/Views/Shared/_Menu.cshtml")
+    </div>
+    <div class="col">
+        <div class="row">
+            <div class="select-input">
+                @Html.Action("Index", "SearchPublisher")
+            </div>
+        </div>
+        @if (Model.BOOKs.Count > 0)
+        {
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Book Code</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Paperback?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in Model.BOOKs)
+                    {
+                        <tr>
+                            <th>
+                                <a href="@Url.Action("Details", "Home", new { id = book.BOOK_CODE})">@book.BOOK_CODE</a>
+                            </th>
+                            <th>@book.TITLE</th>
+                            <th>@book.TYPE</th>
+                            <th>$@book.PRICE</th>
+                            @if (@book.PAPERBACK == "1")
+                            {
+                                <th>True</th>
+                            }
+                            else
+                            {
+                                <th>False</th>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
 
-@foreach (var publisher in Model)
-{
-    @publisher.BOOKs
-}
+    </div>
+</div>

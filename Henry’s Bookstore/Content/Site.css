@@ -63,6 +63,11 @@ textarea {
     padding: 5px 5px 5px 15px;
 }
 
+.select-input{
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
 .book-image{
     width: 150px;
     height: 200px;  

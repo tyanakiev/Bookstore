@@ -1,13 +1,59 @@
-﻿@model List<Henry_s_Bookstore.Models.AUTHOR>
+﻿@model Henry_s_Bookstore.Models.AUTHOR
 
 @{
-    ViewBag.Title = "Inventory";
+    ViewBag.Title = "Search by Author";
 }
+<div class="row gray-div">
+    <p class="heading-position">For INTERNAL use only !</p>
+</div>
+<h4 class="text-center">Search by Author</h4>
+<div class="row">
+    <div class="col-4">
+        @Html.Partial("~/Views/Shared/_Menu.cshtml")
+    </div>
+    <div class="col">
+        <div class="row">
+            <div class="select-input">
+                @Html.Action("Index", "SearchAuthor")
+            </div>
+        </div>
+        @if (Model.WROTEs.Count > 0)
+        {
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Book Code</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Paperback?</th>
+                        <th scope="col">Publisher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in Model.WROTEs)
+                    {
+                    <tr>
+                        <th>
+                            <a href="@Url.Action("Details", "Home", new { id = book.BOOK_CODE})">@book.BOOK_CODE</a>
+                        </th>
+                        <th>@book.BOOK.TITLE</th>
+                        <th>@book.BOOK.TYPE</th>
+                        <th>$@book.BOOK.PRICE</th>
+                        @if (@book.BOOK.PAPERBACK == "1")
+                        {
+                            <th>True</th>
+                        }
+                        else
+                        {
+                            <th>False</th>
+                        }
+                        <th>@book.BOOK.PUBLISHER.PUBLISHER_NAME</th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
 
-<h2>Inventory</h2>
-
-@foreach (var author in Model)
-{
-    @author.AUTHOR_FIRST
-    @author.AUTHOR_LAST
-}
+    </div>
+</div>

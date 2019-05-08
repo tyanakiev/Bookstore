@@ -1,0 +1,6 @@
+﻿@model Henry_s_Bookstore.Models.PublisherDropDown
+
+@using (Html.BeginForm("Search", "SearchPublisher", FormMethod.Post))
+{
+    @Html.DropDownListFor(s => s.PublisherSelected, Model.AllPublisherOptions, "Select Publisher", new { onchange = "this.form.submit();" })
+}

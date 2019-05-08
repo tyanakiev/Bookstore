@@ -1,0 +1,6 @@
+﻿@model Henry_s_Bookstore.Models.AuthorsDropDown
+
+@using (Html.BeginForm("Search", "SearchAuthor", FormMethod.Post))
+{
+    @Html.DropDownListFor(s => s.AuthorSelected, Model.AllAuthorOptions, "Select an Author", new { onchange = "this.form.submit();" })
+}

@@ -35,12 +35,12 @@ namespace Henry_s_Bookstore.Controllers
         }
         public ActionResult Author()
         {
-            List<AUTHOR> authors = _context.AUTHORs.ToList();
-            return View(authors);
+            AUTHOR author = new AUTHOR();
+            return View(author);
         }
         public ActionResult Publisher()
         {
-            List<PUBLISHER> publishers = _context.PUBLISHERs.ToList();
+            PUBLISHER publishers = new PUBLISHER();
             return View(publishers);
         }
         public ActionResult Location()
@@ -55,7 +55,7 @@ namespace Henry_s_Bookstore.Controllers
             ViewBag.Locations = _context.INVENTORies.Where(o => o.BOOK_CODE == id).ToList();
             var authorNumber = _context.WROTEs.Where(o => o.BOOK_CODE == id).FirstOrDefault();
             ViewBag.Author = _context.AUTHORs.Where(o => o.AUTHOR_NUM == authorNumber.AUTHOR_NUM).FirstOrDefault();
-            return View(currentBook);
+            return View("BookDetails", currentBook);
         }
     }
 }

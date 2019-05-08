@@ -156,12 +156,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchAuthorController.cs" />
+    <Compile Include="Controllers\SearchPublisherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AUTHOR.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthorsDropDown.cs" />
     <Compile Include="Models\BOOK.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
@@ -189,6 +192,7 @@
     <Compile Include="Models\PUBLISHER.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PublisherDropDown.cs" />
     <Compile Include="Models\WROTE.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
@@ -402,11 +406,15 @@
     <Content Include="Views\Home\Author.cshtml" />
     <Content Include="Views\Home\Publisher.cshtml" />
     <Content Include="Views\Home\Location.cshtml" />
-    <Content Include="Views\Home\_Menu.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Home\BookDetails.cshtml" />
+    <Content Include="Views\Shared\_SearchByAuthor.cshtml" />
+    <Content Include="Views\Shared\_SearchByPublisher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SearchAuthor\" />
+    <Folder Include="Views\SearchPublisher\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

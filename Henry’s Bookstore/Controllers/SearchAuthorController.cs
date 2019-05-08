@@ -23,6 +23,13 @@ namespace Henry_s_Bookstore.Controllers
            AuthorsDropDown { AllAuthorOptions = authors });
         }
 
+        public ActionResult GetSpecificAuthor(int id)
+        {
+            AUTHOR author = _context.AUTHORs.Where(o => o.AUTHOR_NUM == id).FirstOrDefault();
+
+            return View("~/Views/Home/Author.cshtml", author);
+        }
+
         [HttpPost]
         public ActionResult Search(AuthorsDropDown authorFilter) //expecting model as input
         {

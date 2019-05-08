@@ -4,15 +4,8 @@
     <script>
         function ShowComment(commentData) {
             var target = $("#crsForm");
-            
-            if (courseData)
-            {
-                target.empty();
-                target.append("<p class='comment-message'>Thank you for sharing your comments with Henry's Bookstore Managment. We will be in touch with you shortly via email.</p>");
-            } else {
-
-            }
-            
+            target.empty();
+            target.append("<p class='comment-message'>Thank you for sharing your comments with Henry's Bookstore Managment. We will be in touch with you shortly via email.</p>");
          }
     </script>
 }
@@ -56,7 +49,7 @@
             @Html.DisplayNameFor(model => model.Comments)
             @Html.TextArea("Comments", null, new { @class = "form-control" })
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.ValidationSummary("", true)
             <input type="reset" value="Reset" />
             <input type="submit" value="Submit" />
         }

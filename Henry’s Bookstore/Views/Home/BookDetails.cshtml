@@ -43,11 +43,11 @@
                 </tr>
                 <tr>
                     <th>Publisher</th>
-                    <td>@Model.PUBLISHER.PUBLISHER_NAME</td>
+                    <td><a href="@Url.Action("GetSpecificPublisher", "SearchPublisher", new { id = @Model.PUBLISHER.PUBLISHER_CODE})">@Model.PUBLISHER.PUBLISHER_NAME</a></td>
                 </tr>
                 <tr>
                     <th>Written by</th>
-                    <td>@ViewBag.Author.AUTHOR_FIRST @ViewBag.Author.AUTHOR_LAST</td>
+                    <td><a href="@Url.Action("GetSpecificAuthor", "SearchAuthor", new { id = ViewBag.Author.AUTHOR_NUM})">@ViewBag.Author.AUTHOR_FIRST @ViewBag.Author.AUTHOR_LAST</a></td>
                 </tr>
             </tbody>
         </table>
@@ -64,7 +64,7 @@
                 @foreach (var location in ViewBag.Locations)
                 {
                 <tr>
-                    <th>@location.BRANCH.BRANCH_NAME</th>
+                    <th><a href="@Url.Action("GetSpecificBranch", "SearchBranch", new { id = location.BRANCH_NUM})">@location.BRANCH.BRANCH_NAME</a></th>
                     <td>@location.ON_HAND</td>
                 </tr>
                 }

@@ -23,6 +23,13 @@ namespace Henry_s_Bookstore.Controllers
             { AllPublisherOptions = publishers });
         }
 
+        public ActionResult GetSpecificPublisher(string id)
+        {
+            PUBLISHER publisher = _context.PUBLISHERs.Where(o => o.PUBLISHER_CODE == id).FirstOrDefault();
+
+            return View("~/Views/Home/Publisher.cshtml", publisher);
+        }
+
         [HttpPost]
         public ActionResult Search(PublisherDropDown publisherFilter) 
         {
@@ -30,5 +37,7 @@ namespace Henry_s_Bookstore.Controllers
 
             return View("~/Views/Home/Publisher.cshtml", publisher);
         }
+
+
     }
 }

@@ -21,6 +21,13 @@ namespace Henry_s_Bookstore.Controllers
             return PartialView("~/Views/Shared/_SearchByBranch.cshtml", new BranchDropDown { AllBranchOptions = branches });
         }
 
+        public ActionResult GetSpecificBranch(int id)
+        {
+            BRANCH branch = _context.BRANCHes.Where(o => o.BRANCH_NUM == id).FirstOrDefault();
+
+            return View("~/Views/Home/Location.cshtml", branch);
+        }
+
         [HttpPost]
         public ActionResult Search(BranchDropDown branchFilter)
         {

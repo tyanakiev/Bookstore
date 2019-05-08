@@ -2,11 +2,61 @@
 
 @section Scripts {
     <script>
+
+        function ajaxValidate() {
+            return $('#form0').validate().form();
+        }
+        $("#form0").validate({
+            rules: {
+                // simple rule, converted to {required:true}
+                FirstName: {
+                    required: true
+                },
+                LastName: {
+                    required: true
+                },
+                // compound rule
+                EmailAddress: {
+                    required: true,
+                    email: true
+                },
+                ConfirmEmailAddress: {
+                    required: true,
+                    email: true,
+                    equalTo: "#EmailAddress"
+                },
+                BranchNumber: {
+                    required: true,
+                    min: 1
+                },
+                Comments: {
+                    required: true,
+                }
+            },
+            messages: {
+                FirstName: "Please specify your name\n",
+                LastName: "Please specify your name\n",
+                EmailAddress: {
+                    required: "We need your email address to contact you\n",
+                    EmailAddress: "Your email address must be in the format of name@domain.com\n"
+                },
+                BranchNumber: "Please select Branch",
+                ConfirmEmailAddress: {
+                    required: "We need your email address to contact you\n",
+                    EmailAddress: "Your email address must be in the format of name@domain.com\n"
+                },
+                Comments: "Please enter your comment\n"
+            }
+        })
+
         function ShowComment(commentData) {
             var target = $("#crsForm");
             target.empty();
             target.append("<p class='comment-message'>Thank you for sharing your comments with Henry's Bookstore Managment. We will be in touch with you shortly via email.</p>");
-         }
+        }
+        function ajaxValidate() {
+            return $('#form0').validate().form();
+        }
     </script>
 }
 
@@ -27,34 +77,43 @@
         </div>
     </div>
     <div class="col select-input" id="crsForm">
-        @using (Ajax.BeginForm("Contact", "Contact", new AjaxOptions
+        @using (Ajax.BeginForm("Index", "Contact", new AjaxOptions
         {
             HttpMethod = "Post",
             InsertionMode = InsertionMode.Replace,
+            OnBegin = "ajaxValidate",
             LoadingElementDuration = 1000,
             OnSuccess = "ShowComment"
         }))
         {
-            @Html.DisplayNameFor(model => model.FirstName)
-            @Html.TextBox("FirstName", null, new { @class = "form-control" })
-            @Html.DisplayNameFor(model => model.LastName)
-            @Html.TextBox("LastName", null, new { @class = "form-control" })
-            @Html.DisplayNameFor(model => model.EmailAddress)
-            @Html.TextBox("EmailAddress", null, new { @class = "form-control" })
-            @Html.DisplayNameFor(model => model.ConfirmEmailAddress)
-            @Html.TextBox("ConfirmEmailAddress", null, new { @class = "form-control" })
-            @Html.DisplayNameFor(model => model.BranchNumber)
-            @Html.DropDownListFor(m => m.BranchNumber, Model.Branchs)
-            <br>
-            @Html.DisplayNameFor(model => model.Comments)
-            @Html.TextArea("Comments", null, new { @class = "form-control" })
-
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.FirstName)</div>
+                <div class="col">@Html.TextBox("FirstName", null, new { @class = "form-control" })</div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.LastName)</div>
+                <div class="col">@Html.TextBox("LastName", null, new { @class = "form-control" })</div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.EmailAddress)</div>
+                <div class="col">@Html.TextBox("EmailAddress", null, new { @class = "form-control" })</div>
+                </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.ConfirmEmailAddress)</div>
+                <div class="col">@Html.TextBox("ConfirmEmailAddress", null, new { @class = "form-control" })</div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.BranchNumber)</div>
+                <div class="col">@Html.DropDownListFor(m => m.BranchNumber, Model.Branchs)</div>
+            </div><div class="row">
+                      <div class="col">@Html.DisplayNameFor(model => model.Comments)</div>
+                      <div class="col">@Html.TextArea("Comments", null, new { @class = "form-control" })</div>
+            </div>
             @Html.ValidationSummary("", true)
-            <input type="reset" value="Reset" />
-            <input type="submit" value="Submit" />
+            <div class="row justify-content-center">
+                <input type="reset" value="Reset" />
+                <input type="submit" value="Submit" />
+            </div>
         }
-    </div>
-    <div class="col">
-
     </div>
 </div>

@@ -80,3 +80,7 @@ textarea {
 .comment-message{
     background-color: white;
 }
+
+.error{
+    color: red;
+}

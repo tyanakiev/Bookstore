@@ -21,7 +21,7 @@ namespace Henry_s_Bookstore.Controllers
         }
 
         [HttpPost]
-        public JsonResult Contact(ContactModel contact)
+        public JsonResult Index(ContactModel contact)
         {
             if (String.IsNullOrEmpty(contact.FirstName))
             {

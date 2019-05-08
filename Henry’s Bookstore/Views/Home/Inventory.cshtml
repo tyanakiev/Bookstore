@@ -3,34 +3,27 @@
 @{
     ViewBag.Title = "Inventory";
 }
-
-<h2>Inventory</h2>
+<div class="row gray-div">
+    <p class="heading-position">For INTERNAL use only !</p>
+</div>
+<h4 class="text-center">INVENTORY</h4>
 <div class="row">
     <div class="col-4">
         @Html.Partial("_Menu");
     </div>
     <div class="col">
-        @foreach (var inventory in Model)
-        {
-            <div>
-                <h4>INVENTORY</h4>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @inventory.ON_HAND
-                    </dt>
-
-
-                    <dt>
-                        @inventory.BOOK.TITLE
-                    </dt>
-
-                    <dt>
-                        @inventory.BRANCH.BRANCH_NAME
-                    </dt>
-
-                </dl>
+        <div class="row">
+            
+            @foreach (var inventory in Model)
+            {
+            <div class="col-3">
+                <a href="@Url.Action("Details", "Home", new { id = inventory.BOOK_CODE})">
+                    <img class="img-thumbnail book-image" src="~/Content/Images/@inventory.BOOK_CODE/thumb.jpg" alt="Card image cap">
+                </a>
             </div>
-        }
+            }
+
+        </div>
+        
     </div>
 </div>

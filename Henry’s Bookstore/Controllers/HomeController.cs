@@ -48,5 +48,14 @@ namespace Henry_s_Bookstore.Controllers
             List<BRANCH> locations = _context.BRANCHes.ToList();
             return View(locations);
         }
+
+        public ActionResult Details(string id)
+        {
+            BOOK currentBook = _context.BOOKs.Where(o => o.BOOK_CODE == id).FirstOrDefault();
+            ViewBag.Locations = _context.INVENTORies.Where(o => o.BOOK_CODE == id).ToList();
+            var authorNumber = _context.WROTEs.Where(o => o.BOOK_CODE == id).FirstOrDefault();
+            ViewBag.Author = _context.AUTHORs.Where(o => o.AUTHOR_NUM == authorNumber.AUTHOR_NUM).FirstOrDefault();
+            return View(currentBook);
+        }
     }
 }

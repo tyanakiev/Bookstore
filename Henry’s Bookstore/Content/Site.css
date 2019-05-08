@@ -72,3 +72,11 @@ textarea {
     width: 150px;
     height: 200px;  
 }
+
+.validation-summary-errors{
+    color: #ff0000;
+}
+
+.comment-message{
+    background-color: white;
+}

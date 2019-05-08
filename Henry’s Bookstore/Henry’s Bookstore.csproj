@@ -155,8 +155,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchAuthorController.cs" />
+    <Compile Include="Controllers\SearchBranchController.cs" />
     <Compile Include="Controllers\SearchPublisherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +188,8 @@
     <Compile Include="Models\BRANCH.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchDropDown.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\INVENTORY.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
@@ -362,6 +366,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -410,10 +416,13 @@
     <Content Include="Views\Home\BookDetails.cshtml" />
     <Content Include="Views\Shared\_SearchByAuthor.cshtml" />
     <Content Include="Views\Shared\_SearchByPublisher.cshtml" />
+    <Content Include="Views\Shared\_SearchByBranch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Contact\" />
     <Folder Include="Views\SearchAuthor\" />
+    <Folder Include="Views\SearchBranch\" />
     <Folder Include="Views\SearchPublisher\" />
   </ItemGroup>
   <ItemGroup>

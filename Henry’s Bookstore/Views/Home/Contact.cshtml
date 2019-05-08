@@ -1,17 +1,67 @@
-﻿@{
+﻿@model Henry_s_Bookstore.Models.ContactModel
+
+@section Scripts {
+    <script>
+        function ShowComment(commentData) {
+            var target = $("#crsForm");
+            
+            if (courseData)
+            {
+                target.empty();
+                target.append("<p class='comment-message'>Thank you for sharing your comments with Henry's Bookstore Managment. We will be in touch with you shortly via email.</p>");
+            } else {
+
+            }
+            
+         }
+    </script>
+}
+
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="row gray-div">
+    <p class="heading-position">For INTERNAL use only !</p>
+</div>
+<h4 class="text-center">Share your comments with Managment</h4>
+<div class="row">
+    <div class="col-4">
+        @Html.Partial("~/Views/Shared/_Menu.cshtml")
+    </div>
+    <div class="row">
+        <div id="loading" style="display: none">
+            Please Wait...Saving Data...
+        </div>
+    </div>
+    <div class="col select-input" id="crsForm">
+        @using (Ajax.BeginForm("Contact", "Contact", new AjaxOptions
+        {
+            HttpMethod = "Post",
+            InsertionMode = InsertionMode.Replace,
+            LoadingElementDuration = 1000,
+            OnSuccess = "ShowComment"
+        }))
+        {
+            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.TextBox("FirstName", null, new { @class = "form-control" })
+            @Html.DisplayNameFor(model => model.LastName)
+            @Html.TextBox("LastName", null, new { @class = "form-control" })
+            @Html.DisplayNameFor(model => model.EmailAddress)
+            @Html.TextBox("EmailAddress", null, new { @class = "form-control" })
+            @Html.DisplayNameFor(model => model.ConfirmEmailAddress)
+            @Html.TextBox("ConfirmEmailAddress", null, new { @class = "form-control" })
+            @Html.DisplayNameFor(model => model.BranchNumber)
+            @Html.DropDownListFor(m => m.BranchNumber, Model.Branchs)
+            <br>
+            @Html.DisplayNameFor(model => model.Comments)
+            @Html.TextArea("Comments", null, new { @class = "form-control" })
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <input type="reset" value="Reset" />
+            <input type="submit" value="Submit" />
+        }
+    </div>
+    <div class="col">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    </div>
+</div>

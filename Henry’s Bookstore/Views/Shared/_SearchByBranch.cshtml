@@ -1,0 +1,6 @@
+﻿@model Henry_s_Bookstore.Models.BranchDropDown
+
+@using (Html.BeginForm("Search", "SearchBranch", FormMethod.Post))
+{
+    @Html.DropDownListFor(s => s.BranchSelected, Model.AllBranchOptions, "Select location", new { onchange = "this.form.submit();" })
+}

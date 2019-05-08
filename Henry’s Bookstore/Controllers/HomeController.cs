@@ -45,7 +45,7 @@ namespace Henry_s_Bookstore.Controllers
         }
         public ActionResult Location()
         {
-            List<BRANCH> locations = _context.BRANCHes.ToList();
+            BRANCH locations = new BRANCH();
             return View(locations);
         }
 

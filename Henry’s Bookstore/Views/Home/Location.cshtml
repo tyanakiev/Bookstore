@@ -1,12 +1,71 @@
-﻿@model List<Henry_s_Bookstore.Models.BRANCH>
+﻿@model Henry_s_Bookstore.Models.BRANCH
 
 @{
     ViewBag.Title = "Locations";
 }
 
-<h2>Inventory</h2>
+<div class="row gray-div">
+    <p class="heading-position">For INTERNAL use only !</p>
+</div>
+<h4 class="text-center">Search by Location</h4>
+<div class="row">
+    <div class="col-4">
+        @Html.Partial("~/Views/Shared/_Menu.cshtml")
+    </div>
+    <div class="col">
+        <div class="row">
+            <div class="select-input">
+                @Html.Action("Index", "SearchBranch")
+            </div>
+        </div>
+        @if (Model.INVENTORies.Count > 0)
+        {
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered table-striped mt-3">
+                        <tbody>
+                            <tr>
+                                <th>Branch Number</th>
+                                <th>@Model.BRANCH_NUM</th>
+                            </tr>
+                            <tr>
+                                <th>Branch Name</th>
+                                <th>@Model.BRANCH_NAME</th>
+                            </tr>
+                            <tr>
+                                <th>Branch Location</th>
+                                <th>@Model.BRANCH_LOCATION</th>
+                            </tr>
+                            <tr>
+                                <th>Number of Employees</th>
+                                <th>@Model.NUM_EMPLOYEES</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table table-bordered table-striped mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Quantity on Hand</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var book in Model.INVENTORies)
+                            {
+                                <tr>
+                                    <th>
+                                        <a href="@Url.Action("Details", "Home", new { id = book.BOOK_CODE})">@book.BOOK.TITLE</a>
+                                    </th>
+                                    <th>@book.ON_HAND</th>
 
-@foreach (var locations in Model)
-{
-    @locations.BRANCH_NAME;
-}
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</div>
